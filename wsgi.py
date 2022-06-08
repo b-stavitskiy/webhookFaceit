@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 from app.faceitsdk import FaceitSDK
 
@@ -7,4 +7,8 @@ sdk = FaceitSDK()
 
 @app.route('/')
 def start():
-    return jsonify({ 'key': sdk.getApiKey() })
+    return 'Hello, World!'
+
+@app.route('/oauthCallback')
+def start():
+    return jsonify(request.get_json)
